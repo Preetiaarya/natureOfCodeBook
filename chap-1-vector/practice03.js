@@ -2,35 +2,31 @@ let walker;
 
 function setup() {
   createCanvas(1000, 800);
-  background("aqua"); // Set initial background color
+  background(204,255,255);
 
-  // Create an instance of the Walker class
-  walker = new Walker(0, 0);
+  walker = new Walker(width/2, height/2);
 }
 
 function draw() {
-  // Update and display the walker
-//   walker.update();
+  walker.update();
   walker.show();
 }
 
 class Walker {
   constructor(x, y) {
-    this.pos = createVector(x, y); // Position vector
-    this.vel = p5.Vector.random2D(); // Random direction vector
-    this.vel.mult(random(3)); // Scale the velocity randomly
+    this.pos = createVector(x, y);
+    this.vel = p5.Vector.random2D();
+    this.vel.mult(random(7));
   }
 
-//   update() {
-//     // Update position by adding velocity
-//     this.pos.add(this.vel);
-//   }
+  update() {
+    this.pos.add(this.vel);
+  }
 
   show() {
-    // Display the walker as a pink ellipse
     stroke("pink");
-    strokeWeight(5);
+    strokeWeight(2);
     fill("pink");
-    rect(this.pos.x, this.pos.y, 200,200);
+    rect(this.pos.x, this.pos.y, 50,250);
   }
 }
