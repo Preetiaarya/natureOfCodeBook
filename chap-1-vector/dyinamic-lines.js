@@ -6,7 +6,7 @@ function setup(){
 function draw(){
     translate(width/2,height/2);
 
-    // let v = createVector(random(-100,100),random(-100,50));
+    let v = createVector(random(-100,100),random(-100,50));
     v = p5.Vector.random2D();
     v.mult(random(-100,500));
 

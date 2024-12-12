@@ -3,7 +3,7 @@ let mover;
 
 function setup() {
     createCanvas(800, 800);
-    background(255, 153, 153);
+
 
     mover = new Mover();
 }
@@ -35,6 +35,6 @@ class Mover {
         stroke("white");
         strokeWeight(5);
         fill("white");
-        ellipse(this.position.x, this.position.y, 50);
+        circle(this.position.x, this.position.y, 50);
     }
 }
