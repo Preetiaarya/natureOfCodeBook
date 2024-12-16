@@ -5,7 +5,7 @@ let topcolor, bottomcolor;
 function setup() {
     createCanvas(windowWidth, windowHeight);
 
-    topcolor = color("yellow");
+    topcolor = color("aqua");
     bottomcolor = color("orange");
 
     for (let y = 0; y < height; y++){
