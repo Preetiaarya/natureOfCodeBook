@@ -26,11 +26,23 @@
 //     circle(position.x, position.y, 50);
 
 //     fill("green")
-   
+
 //    rect(0,position.y,20,200);
 //    rect(780,mouseY,20,200);
 
 // }
+
+
+
+
+
+
+
+
+
+
+
+
 
 let position;
 let velocity;
@@ -43,11 +55,10 @@ function setup() {
 }
 
 function draw() {
-    background(153,76,0);
+    background(153, 76, 0);
 
     position.add(velocity);
 
-    // Wall collision logic
     if (position.x > width || position.x < 0) {
         velocity.x *= -1;
     }
@@ -55,13 +66,12 @@ function draw() {
         velocity.y *= -1;
     }
 
-    // Draw ball
     fill("black");
     stroke("white");
     strokeWeight(4);
     circle(position.x, position.y, 50);
 
-    // Draw paddles
+
     fill("green");
     let paddleHeight = 200;
     let paddleWidth = 20;
@@ -71,24 +81,23 @@ function draw() {
     rect(0, leftPaddleY, paddleWidth, paddleHeight);
     rect(width - paddleWidth, rightPaddleY, paddleWidth, paddleHeight);
 
-    // Collision detection for left paddle
-    if (
-        position.x - 25 <= paddleWidth && // Ball touching the left paddle
-        position.y + 25 >= leftPaddleY &&
-        position.y - 25 <= leftPaddleY + paddleHeight
-    ) {
-        velocity.x *= -1; // Reverse x direction
-        position.x = paddleWidth + 25; // Adjust ball position to avoid sticking
-    }
 
-    // Collision detection for right paddle
     if (
-        position.x + 25 >= width - paddleWidth && // Ball touching the right paddle
-        position.y + 25 >= rightPaddleY &&
-        position.y - 25 <= rightPaddleY + paddleHeight
+        position.x - 20 <= paddleWidth &&
+        position.y + 20 >= leftPaddleY &&
+        position.y - 20 <= leftPaddleY + paddleHeight
     ) {
-        velocity.x *= -1; // Reverse x direction
-        position.x = width - paddleWidth - 25; // Adjust ball position to avoid sticking
+        velocity.x *= -1;
+        position.x = paddleWidth + 20;
+    }
+    
+    if (
+        position.x + 20 >= width - paddleWidth &&
+        position.y + 20 >= rightPaddleY &&
+        position.y - 20 <= rightPaddleY + paddleHeight
+    ) {
+        velocity.x *= -1;
+        position.x = width - paddleWidth - 20;
     }
 }
 
