@@ -1,9 +1,9 @@
 function setup() {
-    createCanvas(640, 240);
+    createCanvas(1700, 800);
   }
   
   function draw() {
-    background(255);
+    background(255,255,0);
   
     let mouse = createVector(mouseX, mouseY);
     let center = createVector(width / 2, height / 2);
