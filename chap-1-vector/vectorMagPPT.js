@@ -16,12 +16,12 @@ function setup() {
 
     stroke(newcolor);
     strokeWeight(2);
-
+    // translate(width / 2, height / 2);
+    
     line(0, y, width, y);
     }
 }
 function draw() {
     let vector = createVector(mouseX, mouseY);
-    fill("black");
-    line(200, 200, mouseX, mouseY);
+    line(400, 400, mouseX, mouseY);
 }
