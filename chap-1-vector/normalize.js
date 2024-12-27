@@ -3,7 +3,7 @@ function setup(){
 }
 
 function draw() {
-    background(153,0);
+    background(153,10);
   
     let mouse = createVector(mouseX, mouseY);
     let center = createVector(width / 2, height / 2);
