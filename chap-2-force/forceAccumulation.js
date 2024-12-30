@@ -65,5 +65,21 @@ class Balloon {
             this.vel.x *= -1;
         }
     }
+    show() {
+        stroke(204, 0, 102);
+        strokeWeight(1.5);
+        line(this.pos.x, this.pos.y + 50, this.pos.x, this.pos.y + 100);
+
+
+        noStroke();
+        fill(255, 0, 100);
+        ellipse(this.pos.x, this.pos.y, this.mass * 50, this.mass * 70);
+
+
+        fill(255, 0, 100);
+        triangle(
+            this.pos.x - 5, this.pos.y + 35, this.pos.x + 5, this.pos.y + 35, this.pos.x, this.pos.y + 50);
+    }
+}
 
 
