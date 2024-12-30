@@ -9,7 +9,7 @@ function draw() {
     background(0, 153, 153);
 
     // Upward force to simulate helium
-    let helium = createVector(0, -0.02);
+    let helium = createVector(0, -0.03);
 
     // Wind force based on Perlin noise
     let windStrength = noise(frameCount * 0.01) * 0.2 - 0.1; // Varies between -0.1 and 0.1
@@ -77,8 +77,7 @@ class Balloon {
 
 
         fill(255, 0, 100);
-        triangle(
-            this.pos.x - 5, this.pos.y + 35, this.pos.x + 5, this.pos.y + 35, this.pos.x, this.pos.y + 50);
+        triangle(this.pos.x - 5, this.pos.y + 35, this.pos.x + 5, this.pos.y + 35, this.pos.x, this.pos.y + 50);
     }
 }
 
