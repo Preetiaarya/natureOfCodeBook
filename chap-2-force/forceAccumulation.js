@@ -45,4 +45,25 @@ class Balloon {
         this.acc.set(0, 0);
     }
 
+    edges() {
+        if (this.pos.y <= 0) {
+            this.pos.y = 0;
+            this.vel.y *= -1; // Reverse velocity
+        }
+
+        if (this.pos.y > height) {
+            this.pos.y = height;
+            this.vel.y *= -1;
+        }
+
+        // Prevent the balloon from moving out of the sides
+        if (this.pos.x >= width) {
+            this.pos.x = width;
+            this.vel.x *= -1;
+        } else if (this.pos.x <= 0) {
+            this.pos.x = 0;
+            this.vel.x *= -1;
+        }
+    }
+
 
