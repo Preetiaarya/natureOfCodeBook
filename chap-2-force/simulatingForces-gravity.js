@@ -36,23 +36,23 @@ class Mover {
   }
 
   show() {
-    stroke("pink");
+    stroke("black");
     strokeWeight(3);
     fill("pink");
-    ellipse(this.pos.x, this.pos.y, this.mass * 10);
+    circle(this.pos.x, this.pos.y, this.mass * 10);
   }
 
   edges() {
     if (this.pos.y >= height) {
       this.pos.y = height;
-      this.vel.y *= -1; // Reverse velocity to simulate bounce
+      this.vel.y *= -1; // Reverse velocity
     }
     if (this.pos.x >= width) {
       this.pos.x = width;
-      this.vel.x *= -1; // Reverse velocity to simulate bounce
+      this.vel.x *= -1; 
     } else if (this.pos.x <= 0) {
       this.pos.x = 0;
-      this.vel.x *= -1; // Reverse velocity to simulate bounce
+      this.vel.x *= -1;
     }
   }
 }
