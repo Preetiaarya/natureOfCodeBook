@@ -3,7 +3,7 @@ let balloon;
 
 function setup() {
     createCanvas(1200, 800);
-    balloon = new Balloon(400, 500, 1);
+    balloon = new Balloon(500, 400, 1);
 }
 function draw() {
     background(0, 153, 153);
@@ -46,38 +46,24 @@ class Balloon {
     }
 
     edges() {
-        if (this.pos.y <= 0) {
-            this.pos.y = 0;
+        if (this.pos.y <= 0 || this.pos.y >= height) {
             this.vel.y *= -1; // Reverse velocity
         }
-
-        if (this.pos.y > height) {
-            this.pos.y = height;
-            this.vel.y *= -1;
-        }
-
-        // Prevent the balloon from moving out of the sides
-        if (this.pos.x >= width) {
-            this.pos.x = width;
-            this.vel.x *= -1;
-        } else if (this.pos.x <= 0) {
-            this.pos.x = 0;
+        else if (this.pos.x >= width || this.pos.x <= 0) {
             this.vel.x *= -1;
         }
     }
     show() {
+        fill(255, 0, 100);
+        ellipse(this.pos.x, this.pos.y, this.mass * 50, this.mass * 60);
+
+        fill(255, 0, 100);
+        triangle(this.pos.x - 5, this.pos.y + 30, this.pos.x + 5, this.pos.y + 30, this.pos.x, this.pos.y + 50);
+
         stroke(204, 0, 102);
         strokeWeight(1.5);
         line(this.pos.x, this.pos.y + 50, this.pos.x, this.pos.y + 100);
 
-
-        noStroke();
-        fill(255, 0, 100);
-        ellipse(this.pos.x, this.pos.y, this.mass * 50, this.mass * 70);
-
-
-        fill(255, 0, 100);
-        triangle(this.pos.x - 5, this.pos.y + 35, this.pos.x + 5, this.pos.y + 35, this.pos.x, this.pos.y + 50);
     }
 }
 
