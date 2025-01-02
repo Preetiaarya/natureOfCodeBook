@@ -12,6 +12,11 @@ function draw() {
     let gravity = createVector(0, 0.1);
     mover.applyForce(gravity);
 
+    if (mouseIsPressed) {
+        let wind = createVector(0.1, 0);
+        mover.applyForce(wind);
+    }
+
     mover.update();
     mover.show();
     mover.edges();
