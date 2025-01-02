@@ -19,7 +19,7 @@ function draw() {
 
     mover.update();
     mover.show();
-    mover.edges();
+    mover.checkEdges();
 }
 
 class Mover {
