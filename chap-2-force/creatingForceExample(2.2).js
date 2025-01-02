@@ -4,7 +4,7 @@ let moverB;
 function setup() {
     createCanvas(600, 600);
 
-    moverA = new Mover(200, 200, 2);
+    moverA = new Mover(200, 200, 10);
     moverB = new Mover(300, 200, 2);
 
 }
