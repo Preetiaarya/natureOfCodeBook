@@ -29,3 +29,12 @@ function draw() {
     mover.show();
 
 }
+class Mover{
+    constructor(x,y,mass){
+        this.pos = createVector(x,y);
+        this.vel = createVector(0,0);
+        this.acc = createVector(0,0);
+        this.mass = mass;
+    }
+    
+}
