@@ -29,12 +29,35 @@ function draw() {
     mover.show();
 
 }
-class Mover{
-    constructor(x,y,mass){
-        this.pos = createVector(x,y);
-        this.vel = createVector(0,0);
-        this.acc = createVector(0,0);
+class Mover {
+    constructor(x, y, mass) {
+        this.pos = createVector(x, y);
+        this.vel = createVector(0, 0);
+        this.acc = createVector(0, 0);
         this.mass = mass;
     }
-    
+    applyForce(force) {
+        let f = p5.Vector.div(force, this.mass);
+        this.acc.add(f);
+    }
+    update() {
+        this.pos.add(this.vel);
+        this.vel.add(this.acc);
+        this.acc.set(0, 0);
+    }
+    show() {
+        stroke(0);
+        fill(175);
+        circle(this.position.x, this.position.y, this.mass * 16);
+    }
+    bounceEdges() {
+        if (this.pos.x >= width || this.pos.x <= 0) {
+            this.vel *= -1;
+        }
+        else if (this.pos.y >= height || this.pos.y <= 0) {
+            this.vel *= -1;
+        }
+    }
+
+
 }
