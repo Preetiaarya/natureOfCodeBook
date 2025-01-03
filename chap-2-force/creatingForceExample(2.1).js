@@ -15,7 +15,7 @@ function draw() {
     if (mouseIsPressed) {
         let wind = createVector(0.1, 0);
         mover.applyForce(wind);
-    }
+    }z
 
     mover.update();
     mover.show();

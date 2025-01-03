@@ -46,7 +46,7 @@ class Mover {
         circle(this.pos.x, this.pos.y, this.mass * 15);
     }
 
-    edges() {
+    checkEdges() {
         if (this.pos.x >= width || this.pos.x <= 0) {
             this.vel.mult(-1);
         }

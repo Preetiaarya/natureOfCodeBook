@@ -20,18 +20,18 @@ function draw() {
     }
 }
 
-// Class to represent each moving circle
+
 class Mover {
     constructor(x, y, radius) {
         this.pos = createVector(x, y);
         this.vel = createVector(0, 0);
         this.acc = createVector(0, 0);
         this.radius = radius;
-        this.mass = radius / 10; // Larger circles have more mass
+        this.mass = radius / 10;
     }
 
     applyForce(force) {
-        let f = p5.Vector.div(force, this.mass); // F = ma
+        let f = p5.Vector.div(force, this.mass);
         this.acc.add(f);
     }
 
@@ -71,14 +71,13 @@ class Mover {
     }
 }
 
-// Function to calculate wind based on the mouse position
 function calculateWind(mover) {
-    let mouse = createVector(mouseX, mouseY); // Fan's position (mouse)
-    let direction = p5.Vector.sub(mouse, mover.pos); // Direction from mover to mouse
-    let distance = direction.mag(); // Distance to the fan
-    direction.normalize(); // Normalize to get a unit vector
+    let mouse = createVector(mouseX, mouseY);
+    let direction = p5.Vector.sub(mouse, mover.pos);
+    let distance = direction.mag();
+    direction.normalize(); 
 
-    let strength = constrain(map(distance, 0, width, 1, 0), 0, 1); // Strength diminishes with distance
-    direction.mult(strength * 0.5); // Scale force
+    let strength = constrain(map(distance, 0, width, 1, 0), 0, 1);
+    direction.mult(strength * 0.5);
     return direction;
 }

@@ -51,7 +51,6 @@ class Mover {
     }
 }
 
-// Function to apply invisible forces near the edges
 function applyEdgeForces(mover) {
     let edgeForce = 1;
 
