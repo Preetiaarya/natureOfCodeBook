@@ -50,14 +50,6 @@ class Mover {
         fill(175);
         circle(this.position.x, this.position.y, this.mass * 16);
     }
-    bounceEdges() {
-        if (this.pos.x >= width || this.pos.x <= 0) {
-            this.vel *= -1;
-        }
-        else if (this.pos.y >= height || this.pos.y <= 0) {
-            this.vel *= -1;
-        }
-    }
-
+    
 
 }
