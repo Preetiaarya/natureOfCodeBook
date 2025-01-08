@@ -9,6 +9,7 @@ function setup() {
 
 function draw() {
     background(255, 255, 51);
+    // background(220,0);
 
     for (let mover of movers) {
         let wind = calculateWind(mover);

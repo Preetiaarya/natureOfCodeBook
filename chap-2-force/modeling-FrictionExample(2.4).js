@@ -6,7 +6,8 @@ function setup() {
 }
 
 function draw() {
-background(255,0);
+
+    background(255,0);
     let gravity = createVector(0, 1);
     mover.applyForce(gravity);
 
@@ -21,11 +22,12 @@ background(255,0);
     friction.mult(-1);
     friction.setMag(c);
     mover.applyForce(friction);
-    //   Apply the friction force vector to the object.
+    //  Apply the friction force vector to the object.
     }
-    mover.edges();//   Call the new bounceEdges() method.
+    mover.bounceEdges();//   Call the new bounceEdges() method.
     mover.update();
     mover.show();
+
 }
 class Mover {
     constructor(x, y, mass) {
@@ -57,12 +59,12 @@ class Mover {
         return (this.pos.y >= height);
     }
 
-    edges() {
+    bounceEdges() {
         // Bounce off edges
-        if (this.pos.x > width || this.pos.x < 0) {
+        if (this.pos.x >= width || this.pos.x <= 0) {
             this.vel.x *= -1;
         }
-        if (this.pos.y > height || this.pos.y < 0) {
+        if (this.pos.y >= height || this.pos.y <= 0) {
             this.vel.y *= -1;
         }
     }
