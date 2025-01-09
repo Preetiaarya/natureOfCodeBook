@@ -18,9 +18,9 @@ function draw() {
   moverA.applyForce(gravityA);
   moverB.applyForce(gravityB);
 
-  if (mouseIsPressed) {
-    moverA.applyFriction(0.1);  // Friction coefficient for moverA
-    moverB.applyFriction(0.05); // Friction coefficient for moverB
+  if(mouseIsPressed){
+    moverA.applyForce(frictionA);
+    moverB.applyForce(frictionB);
   }
 
   moverA.update();
@@ -70,7 +70,6 @@ class Mover {
       this.vel.x *= -1;
     }
     if (this.pos.y >= height) {
-      this.pos.y = height;
       this.vel.y *= -0.9;  // Damping effect for bouncing
     } else if (this.pos.y <= 0) {
       this.vel.y *= -1;
