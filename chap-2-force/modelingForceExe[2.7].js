@@ -85,7 +85,7 @@ class Mover {
             this.pos.y = height - this.radius;
             this.vel.y *= bounce;
         }
-        else  if (this.pos.x > width- this.radius) {
+        else  if (this.pos.x > width- this.radius||this.pos.x<=0) {
             this.pos.x = width - this.radius;
             this.vel.x *= bounce;
         }
