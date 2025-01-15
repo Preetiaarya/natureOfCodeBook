@@ -21,4 +21,30 @@ function draw() {
       movers[i].show();
     }
   }
+  class Mover {
+    constructor(x, y, mass) {
+      this.position = createVector(x, y);
+      this.velocity = createVector(0, 0);
+      this.acceleration = createVector(0, 0);
+      this.mass = mass;
+    }
   
+    applyForce(force) {
+      let f = force.copy();
+      f.div(this.mass);
+      this.acceleration.add(f);
+    }
+  
+    update() {
+      this.velocity.add(this.acceleration);
+      this.position.add(this.velocity);
+      this.acceleration.mult(0);  // Reset acceleration
+    }
+  
+    show() {
+      fill(127);
+      stroke(0);
+      ellipse(this.position.x, this.position.y, this.mass * 16, this.mass * 16);
+    }
+  }
+   
