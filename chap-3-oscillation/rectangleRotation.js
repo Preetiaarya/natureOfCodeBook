@@ -1,4 +1,4 @@
-// =======================rotation-1=======================================
+// =======================rect-rotate=======================================
 
 // let angle = 2;  // Set the initial angle value, which will control the rotation of the rectangle
 
@@ -17,7 +17,7 @@
 //   angle = angle + 1;  // Increase the 'angle' by 1 degree each frame to rotate the rectangle continuously
 // }
 
-// =======================rotation-2==========================================
+// =======================rect-rotate-with-line==========================================
 
 // let angle = 0;  // Set the initial angle value, which will control the rotation of the rectangle
 
@@ -39,7 +39,7 @@
 //   angle = angle + 1;  // Increase the 'angle' by 1 degree each frame to rotate the rectangle continuously
 // }
 
-// =======================rotation-3===============================
+// =======================rect-rotate-center===============================
 
 // let angle = 0;  // Set the initial angle value, which will control the rotation of the rectangle
 
@@ -62,7 +62,7 @@
 //   angle = angle + 1;  // Increase the 'angle' by 1 degree each frame to rotate the rectangle continuously
 // }
 
-// ======================rotation-4=====================================
+// ======================increase rotate pos x+2,y+2=====================================
 
 let x = 50;
 let y = 50;
