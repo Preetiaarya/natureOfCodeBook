@@ -26,5 +26,16 @@ class Mover {
         // Add the calculated acceleration to the object's current acceleration
         this.acc.add(f);
     }
+
+    update() {
+        // Update the velocity by adding the current acceleration to it
+        this.vel.add(this.acc);
+        
+        // Update the position by adding the current velocity to it
+        this.pos.add(this.vel);
+        
+        // Reset the acceleration to zero for the next frame
+        this.acc.set(0, 0);
+    }
     
 }
