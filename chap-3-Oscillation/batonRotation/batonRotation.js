@@ -8,7 +8,7 @@ function setup() {
     angleMode(RADIANS);
 }
 function draw() {
-    background(220);
+    background(220,0);
     stroke(0);
     fill(255);
 
