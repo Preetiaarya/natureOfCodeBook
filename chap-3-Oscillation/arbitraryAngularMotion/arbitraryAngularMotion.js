@@ -37,5 +37,16 @@ class Mover {
         // Reset the acceleration to zero for the next frame
         this.acc.set(0, 0);
     }
+
+    show(){
+        stroke(255);
+        strokeWeight(2);
+        fill(255,100);
+ // Move the origin to the object's position
+ translate(this.pos.x, this.pos.y);
+    
+ // Draw the object as a circle with radius 'r'
+ ellipse(0, 0, this.r * 2);
+    }
     
 }
