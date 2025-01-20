@@ -1,3 +1,14 @@
+let mover;
+
+function setup(){
+    createCanvas(600,400);
+
+    mover = new Mover;
+}
+function draw(){
+    background(220);
+}
+
 class Mover {
     constructor(x, y, m) {
         this.pos = createVector(x, y);
