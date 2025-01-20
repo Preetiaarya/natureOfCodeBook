@@ -35,5 +35,8 @@ function draw() {
     angle += angleV;  // Increment the angle by the angular velocity
     angle += angleA;  // Increment the angle by the angular acceleration based on mouseX position
 
-
+    // Stop the rotation when the angular velocity becomes very small
+   if (abs(angleV) < 0.001) {
+        angleV = 0;  // Stop movement when the velocity is close to zero
+     }
 }
