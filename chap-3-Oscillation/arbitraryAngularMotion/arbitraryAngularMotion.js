@@ -18,4 +18,13 @@ class Mover {
         this.mass = m;
         this.r = sqrt(this.mass) * 2;
     }
+
+    applyForce(force) {
+        // Calculate the acceleration by dividing the force by the object's mass
+        let f = p5.Vector.div(force, this.mass);
+        
+        // Add the calculated acceleration to the object's current acceleration
+        this.acc.add(f);
+    }
+    
 }
