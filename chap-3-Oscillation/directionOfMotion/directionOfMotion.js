@@ -61,15 +61,15 @@ function draw() {
 
         // The checkEdges() function ensures that if the mover goes off the canvas, it wraps around
         checkEdges() {
-            if (this.position.x >= width) { // If the mover goes beyond the right edge
+            if (this.position.x > width) { // If the mover goes beyond the right edge
                 this.position.x = 0; // Wrap it to the left edge
-            } else if (this.position.x <= 0) { // If the mover goes beyond the left edge
+            } else if (this.position.x < 0) { // If the mover goes beyond the left edge
                 this.position.x = width; // Wrap it to the right edge
             }
 
-            if (this.position.y >= height) { // If the mover goes beyond the bottom edge
+            if (this.position.y > height) { // If the mover goes beyond the bottom edge
                 this.position.y = 0; // Wrap it to the top edge
-            } else if (this.position.y <= 0) { // If the mover goes beyond the top edge
+            } else if (this.position.y < 0) { // If the mover goes beyond the top edge
                 this.position.y = height; // Wrap it to the bottom edge
             }
         }

@@ -66,7 +66,7 @@
 
 let x = 50;
 let y = 50;
-// let angle = 1;  // Initialize the angle variable for rotation
+let angle = 1;  // Initialize the angle variable for rotation
 
 function setup() {
   createCanvas(400, 400);  // Create a 400x400 pixel canvas
@@ -85,5 +85,5 @@ function draw() {
   x = x + 2;  // Move the x position of the rectangle to the right
   y = y + 2;  // Move the y position of the rectangle downwards
 
-  // angle = angle + 1;  // Increase the 'angle' by 1 degree each frame to rotate the rectangle continuously
+  angle = angle + 1;  // Increase the 'angle' by 1 degree each frame to rotate the rectangle continuously
 }
