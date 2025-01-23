@@ -5,18 +5,18 @@ function setup() {
 }
 
 function draw() {
-    background(204, 255, 255); // Light blue background
+    background(204, 255, 255); 
 
     // Circle setup
-    stroke(255, 153, 51); // Orange stroke for the circle
-    strokeWeight(4); // Thin stroke for the circle border
+    stroke(255, 153, 51); 
+    strokeWeight(4); 
     translate(200, 200); // Move the origin to (200, 200)
     let r = 100; // Radius of the circle
     circle(0, 0, r * 2); // Draw the circle
 
     // Moving point setup
-    strokeWeight(32); // Thick stroke for the moving point
-    stroke(153, 255, 153); // Green stroke for the point
+    strokeWeight(32); 
+    stroke(153, 0,76); 
     let x = r * cos(angle); // Calculate x-coordinate based on angle
     let y = r * sin(angle); // Calculate y-coordinate based on angle
     point(x, y); // Draw the point
