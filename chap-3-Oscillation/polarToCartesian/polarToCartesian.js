@@ -1,12 +1,12 @@
-let r;
-let theta;
+let r;  // radius 0r distance
+let theta; //angle in radian
 
 function setup() {
   createCanvas(600, 400);
 
   // Initialize all values.
-  r = height * 0.45;
-  theta = 0;
+  r = height * 0.45; //sets the radius t0 45% of the canvas height for dynamic
+  theta = 0; // sets starting angle to 0 radians positioning the point at the circles rightmost edges
 }
 
 function draw() {
