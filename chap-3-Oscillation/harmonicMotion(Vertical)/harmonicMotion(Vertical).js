@@ -12,7 +12,7 @@ function draw() {
     let y = amplitude * sin(angle); // Calculates the vertical position using a sine function.
     angle += angleVelocity; // Increases the angle over time to create oscillation.
 
-    translate(width / 2, height / 2); // Moves the origin to the center of the canvas.
+    translate(width / 2, height / 2); // Moves the origin to the center of the canvas.git
     
     stroke(0); 
     strokeWeight(2);
