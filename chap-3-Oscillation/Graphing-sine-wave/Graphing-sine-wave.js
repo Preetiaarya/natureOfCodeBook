@@ -1,35 +1,35 @@
-let angles = []; // Array to store the angles for each point
-let angleV = 0.05; // Angle velocity (speed of oscillation)
-let r = 16; // Radius of the circles
+// let angles = []; // Array to store the angles for each point
+// let angleV = 0.05; // Angle velocity (speed of oscillation)
+// let r = 16; // Radius of the circles
 
-function setup() {
-    createCanvas(800, 600); // Create a canvas of 800x600 pixels
+// function setup() {
+//     createCanvas(800, 600); // Create a canvas of 800x600 pixels
 
-    let total = floor(width / (r * 2)); // Determine how many points fit across the width
-    for (let i = 0; i < total; i++) {
-        angles[i] = 0; // Initialize all angles to 0
-    }
-}
+//     let total = floor(width / (r * 2)); // Determine how many points fit across the width
+//     for (let i = 0; i < total; i++) {
+//         angles[i] = 0; // Initialize all angles to 0
+//     }
+// }
 
-function draw() {
-    background(0); // Set background color to black
+// function draw() {
+//     background(0); // Set background color to black
 
-    translate(width / 2, height / 2); // Move the origin to the center of the canvas
-    fill("yellow"); // Set fill color to yellow
-    stroke("yellow"); // Set stroke color to yellow
+//     translate(width / 2, height / 2); // Move the origin to the center of the canvas
+//     fill("yellow"); // Set fill color to yellow
+//     stroke("yellow"); // Set stroke color to yellow
 
-    for (let i = 0; i < angles.length; i++) {
-        let y = map(sin(angles[i]), -1, 1, -height / 2, height / 2); // Map sine value to vertical position
-        let x = map(i, 0, angles.length, -width / 2, width / 2); // Map index to horizontal position
+//     for (let i = 0; i < angles.length; i++) {
+//         let y = map(sin(angles[i]), -1, 1, -height / 2, height / 2); // Map sine value to vertical position
+//         let x = map(i, 0, angles.length, -width / 2, width / 2); // Map index to horizontal position
 
-        strokeWeight(4); // Set line thickness
-        line(x, 0, x, y); // Draw vertical line from the center to the current point
+//         strokeWeight(4); // Set line thickness
+//         line(x, 0, x, y); // Draw vertical line from the center to the current point
 
-        circle(x, y, r * 2); // Draw a circle at the calculated (x, y) position
+//         circle(x, y, r * 2); // Draw a circle at the calculated (x, y) position
 
-        angles[i] += angleV; // Increment the angle to animate motion
-    }
-}
+//         angles[i] += angleV; // Increment the angle to animate motion
+//     }
+// }
 
 
 // ==============================================================================
@@ -106,3 +106,60 @@ function draw() {
 
 
 // ===========================================================================
+
+// let startAngle = 0; // Starting angle for the wave
+// let angleV = 0.2; // Increment value for angle variation
+
+// function setup() {
+//   createCanvas(600, 400); // Set up canvas size
+// }
+
+// function draw() {
+//   background(220); // Set background color
+
+//   let angle = startAngle; // Initialize angle for wave calculation
+//   startAngle += 0.1; // Increment starting angle for motion
+
+//   for (let x = 0; x <= width; x += 24) { // Loop through x positions across canvas
+//     let y = map(sin(angle), -2, 2, 0, height); // Calculate y position using sine wave
+//     stroke(0); // Set stroke color to black
+//     strokeWeight(2); // Set stroke thickness
+//     fill(127, 127); // Set fill color with some transparency
+//     circle(x, y, 35); // Draw circle at calculated position
+//     angle += angleV; // Increment angle for next position
+//   }
+// }
+
+// ========================================================
+
+let startAngle = 0; // Starting angle for the wave
+let angleV = 0.2; // Increment value for angle variation
+
+function setup() {
+  createCanvas(600, 400); // Set up canvas size
+}
+
+function draw() {
+  background(220); // Set background color
+
+  let angle = startAngle; // Initialize angle for wave calculation
+  startAngle += 0.1; // Increment starting angle for motion
+
+  for (let x = 0; x <= width; x += 24) { // Loop through x positions across canvas
+    let y = map(sin(angle), -2, 2, 0, height); // Calculate y position using sine wave
+    
+    let r = random(255); // Generate random red value
+    let g = random(255); // Generate random green value
+    let b = random(255); // Generate random blue value
+
+    stroke(0); // Set stroke color to black
+    strokeWeight(2); // Set stroke thickness
+    fill(r, g, b, 150); // Set random fill color with some transparency
+    circle(x, y, 35); // Draw circle at calculated position
+
+    angle += angleV; // Increment angle for next position
+  }
+}
+
+
+
