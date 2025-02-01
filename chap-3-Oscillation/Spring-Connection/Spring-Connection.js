@@ -70,9 +70,29 @@ class Bob {
 
         circle(this.position.x, this.position.y, this.mass * 2); // Draw the bob as a circle
     }
+    // Handle mouse click interaction (check if bob is clicked)
+    handleClick(mx, my) {
+        let d = dist(mx, my, this.position.x, this.position.y); // Calculate distance from mouse to bob
+        if (d < this.mass) { // If the mouse is inside the bob
+            this.dragging = true; // Enable dragging
+            this.dragOffset.x = this.position.x - mx; // Store offset to maintain position while dragging
+            this.dragOffset.y = this.position.y - my;
+        }
+    }
 
-  
+    // Stop dragging when the mouse is released
+    stopDragging() {
+        this.dragging = false;
+    }
 
+    // Handle bob movement when dragged by the mouse
+    handleDrag(mx, my) {
+        if (this.dragging) { // If dragging is active
+            this.position.x = mx + this.dragOffset.x; // Update position while maintaining offset
+            this.position.y = my + this.dragOffset.y;
+        }
+    }
+}
 class Spring {
     constructor(x, y, length) {
         this.anchor = createVector(x, y); // Anchor point where the spring is fixed
