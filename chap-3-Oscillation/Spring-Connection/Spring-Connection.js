@@ -51,3 +51,16 @@ function mouseReleased() {
   // Stop dragging when the mouse is released
   bob.stopDragging();
 }
+
+class Spring {
+    constructor(x, y, length) {
+      // Anchor point where the spring is fixed
+      this.anchor = createVector(x, y);
+      
+      // Natural (rest) length of the spring
+      this.restLength = length;
+      
+      // Spring constant (determines the stiffness of the spring)
+      this.k = 0.2;
+    }
+}
