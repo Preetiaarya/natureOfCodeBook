@@ -31,6 +31,19 @@ function mousePressed() {
 function mouseReleased() {
     bob.stopDragging(); // Stop dragging when the mouse is released
 }
+class Bob {
+    constructor(x, y) {
+        this.position = createVector(x, y); // Initial position of the bob
+        this.velocity = createVector();   // Initial velocity (starts at rest)
+        this.acceleration = createVector(); // Initial acceleration (starts at zero)
+        this.mass = 24; // Mass of the bob (affects force calculations)
+        this.damping = 0.98; // Damping factor to simulate friction/air resistance
+
+        // Variables for user interaction (dragging behavior)
+        this.dragOffset = createVector(); // Offset between mouse and bob position
+        this.dragging = false; // Tracks whether the bob is being dragged
+    }
+  
 
 class Spring {
     constructor(x, y, length) {
@@ -54,22 +67,33 @@ class Spring {
         force.setMag(-1 * this.k * stretch);
         bob.applyForce(force); // Apply the computed spring force to the bob
     }
-}
-constrainLength(bob, minlen, maxlen) {
-    let direction = p5.Vector.sub(bob.position, this.anchor);// Calculate a vector pointing from the bob's position to the anchor point
-    let length = direction.mag(); // Get the current length (distance between bob and anchor)
 
-    // Check if the length is shorter than the minimum allowed length
-    if (length < minlen) {
-        direction.setMag(minlen); // Set the magnitude to the minimum allowed length
-        bob.position = p5.Vector.add(this.anchor, direction); // Adjust the bob's position to stay within the minimum constraint
-        bob.velocity.mult(0); // Stop the bob's movement when constrained
+    constrainLength(bob, minlen, maxlen) {
+        let direction = p5.Vector.sub(bob.position, this.anchor);// Calculate a vector pointing from the bob's position to the anchor point
+        let length = direction.mag(); // Get the current length (distance between bob and anchor)
 
-        // Check if the length is longer than the maximum allowed length
-    } else if (length > maxlen) {
-        direction.setMag(maxlen); // Set the magnitude to the maximum allowed length
-        bob.position = p5.Vector.add(this.anchor, direction); // Adjust the bob's position to stay within the maximum constraint
-        bob.velocity.mult(0); // Stop the bob's movement when constrained
+        // Check if the length is shorter than the minimum allowed length
+        if (length < minlen) {
+            direction.setMag(minlen); // Set the magnitude to the minimum allowed length
+            bob.position = p5.Vector.add(this.anchor, direction); // Adjust the bob's position to stay within the minimum constraint
+            bob.velocity.mult(0); // Stop the bob's movement when constrained
+
+            // Check if the length is longer than the maximum allowed length
+        } else if (length > maxlen) {
+            direction.setMag(maxlen); // Set the magnitude to the maximum allowed length
+            bob.position = p5.Vector.add(this.anchor, direction); // Adjust the bob's position to stay within the maximum constraint
+            bob.velocity.mult(0); // Stop the bob's movement when constrained
+        }
+    }
+    // Method to draw the anchor point of the spring
+    show() {
+        fill(127); // Set fill color to gray
+        circle(this.anchor.x, this.anchor.y, 10); // Draw a small circle at the anchor point
+    }
+
+    // Method to draw the line representing the spring connection between Bob and the anchor
+    showLine(bob) {
+        stroke(0); // Set line color to black
+        line(bob.position.x, bob.position.y, this.anchor.x, this.anchor.y); // Draw a line from the bob to the anchor
     }
 }
-
