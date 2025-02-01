@@ -44,19 +44,33 @@ class Bob {
         this.dragging = false; // Tracks whether the bob is being dragged
     }
     // Update position using standard Euler integration
-  update() {
-    this.velocity.add(this.acceleration); // Apply acceleration to velocity
-    this.velocity.mult(this.damping); // Apply damping to slow down motion
-    this.position.add(this.velocity); // Update position based on velocity
-    this.acceleration.mult(0); // Reset acceleration for the next frame
-  }
+    update() {
+        this.velocity.add(this.acceleration); // Apply acceleration to velocity
+        this.velocity.mult(this.damping); // Apply damping to slow down motion
+        this.position.add(this.velocity); // Update position based on velocity
+        this.acceleration.mult(0); // Reset acceleration for the next frame
+    }
 
-  // Apply a force to the bob (F = M * A)
-  applyForce(force) {
-    let f = force.copy(); // Copy the force vector
-    f.div(this.mass); // Divide force by mass to get acceleration
-    this.acceleration.add(f); // Apply acceleration to the bob
-  }
+    // Apply a force to the bob (F = M * A)
+    applyForce(force) {
+        let f = force.copy(); // Copy the force vector
+        f.div(this.mass); // Divide force by mass to get acceleration
+        this.acceleration.add(f); // Apply acceleration to the bob
+    }
+    // Draw the bob on the canvas
+    show() {
+        stroke(0); // Set outline color
+        strokeWeight(2); // Set outline thickness
+        fill(127); // Default bob color
+
+        // If dragging, change the bob's color
+        if (this.dragging) {
+            fill(200);
+        }
+
+        circle(this.position.x, this.position.y, this.mass * 2); // Draw the bob as a circle
+    }
+
   
 
 class Spring {
