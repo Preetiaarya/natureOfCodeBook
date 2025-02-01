@@ -1,12 +1,10 @@
 let bob; // Mover object (will store the reference to the bob)
-
 let spring; // Spring object (will store the reference to the spring)
 
 function setup() {
     createCanvas(800, 400); // Set up the canvas size
 
     spring = new Spring(width / 2, 10, 100); // The third argument in Spring is "rest length" (natural length of the spring)
-
     bob = new Bob(width / 2, 100);// Create the bob at position (width/2, 100)
 }
 
@@ -14,15 +12,10 @@ function draw() {
     background(0, 220); // Set background to white
 
     let gravity = createVector(0, 2); // Create a gravity force (pulling the bob downward)
-
     bob.applyForce(gravity); // Apply the gravity force to the bob
-
     bob.update(); // Update the bob's position based on forces acting on it
-
     bob.handleDrag(mouseX, mouseY); // Handle mouse dragging interaction with the bob
-
     spring.connect(bob); // Connect the bob to the spring (calculate spring force)
-
     spring.constrainLength(bob, 30, 200); // Constrain the spring length between a minimum (30) and a maximum (200)
 
     // Draw the spring and bob
@@ -42,9 +35,7 @@ function mouseReleased() {
 class Spring {
     constructor(x, y, length) {
         this.anchor = createVector(x, y); // Anchor point where the spring is fixed
-
         this.restLength = length; // Natural (rest) length of the spring
-
         this.k = 0.2; // Spring constant (determines the stiffness of the spring)
     }
     // Connect the bob to the spring and apply the spring force
@@ -61,8 +52,24 @@ class Spring {
         // Apply Hooke’s Law: F = -k * stretch
         // This adjusts both the direction and magnitude of the force
         force.setMag(-1 * this.k * stretch);
-
-        // Apply the computed spring force to the bob
-        bob.applyForce(force);
+        bob.applyForce(force); // Apply the computed spring force to the bob
     }
 }
+constrainLength(bob, minlen, maxlen) {
+    let direction = p5.Vector.sub(bob.position, this.anchor);// Calculate a vector pointing from the bob's position to the anchor point
+    let length = direction.mag(); // Get the current length (distance between bob and anchor)
+
+    // Check if the length is shorter than the minimum allowed length
+    if (length < minlen) {
+        direction.setMag(minlen); // Set the magnitude to the minimum allowed length
+        bob.position = p5.Vector.add(this.anchor, direction); // Adjust the bob's position to stay within the minimum constraint
+        bob.velocity.mult(0); // Stop the bob's movement when constrained
+
+        // Check if the length is longer than the maximum allowed length
+    } else if (length > maxlen) {
+        direction.setMag(maxlen); // Set the magnitude to the maximum allowed length
+        bob.position = p5.Vector.add(this.anchor, direction); // Adjust the bob's position to stay within the maximum constraint
+        bob.velocity.mult(0); // Stop the bob's movement when constrained
+    }
+}
+
