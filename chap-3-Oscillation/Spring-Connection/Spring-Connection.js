@@ -43,6 +43,20 @@ class Bob {
         this.dragOffset = createVector(); // Offset between mouse and bob position
         this.dragging = false; // Tracks whether the bob is being dragged
     }
+    // Update position using standard Euler integration
+  update() {
+    this.velocity.add(this.acceleration); // Apply acceleration to velocity
+    this.velocity.mult(this.damping); // Apply damping to slow down motion
+    this.position.add(this.velocity); // Update position based on velocity
+    this.acceleration.mult(0); // Reset acceleration for the next frame
+  }
+
+  // Apply a force to the bob (F = M * A)
+  applyForce(force) {
+    let f = force.copy(); // Copy the force vector
+    f.div(this.mass); // Divide force by mass to get acceleration
+    this.acceleration.add(f); // Apply acceleration to the bob
+  }
   
 
 class Spring {
