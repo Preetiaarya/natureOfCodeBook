@@ -1,10 +1,12 @@
 let angle; // Angle of the pendulum
-let angleV = 0; // Angular velocity of the pendulum
-let angleA = 0.01; // Angular acceleration applied to the pendulum
+let angleV = 0; // Angular velocity of the pendulum (rate of change of angle)
+let angleA = 0.001; // Angular acceleration applied to the pendulum
 
 let bob; // Position vector of the pendulum bob
 let len; // Length of the pendulum rod
 let origin; // Origin point from where the pendulum is hanging
+
+let gravity = 1; // Gravitational force affecting the pendulum
 
 function setup() {
     createCanvas(600, 400); // Create a canvas of 600x400 pixels
@@ -18,9 +20,15 @@ function setup() {
 function draw() {
     background(220); // Set background color to light gray (220)
 
-    angle += angleV; // Increment the angle to update the pendulum's position
+    // Calculate the force acting on the pendulum due to gravity
+    let force = gravity * sin(angle);
+
+    // Compute angular acceleration using Newton's Second Law for rotational motion
+    angleA = (-1 * force) / len; 
     angleV += angleA; // Update angular velocity using angular acceleration
 
+    angle += angleV; // Increment the angle to update the pendulum's position
+    // angleV += 0.99; // (Commented out: Could be used for damping effect)
 
     // Calculate the new position of the bob using trigonometry
     bob.x = len * sin(angle) + origin.x;
