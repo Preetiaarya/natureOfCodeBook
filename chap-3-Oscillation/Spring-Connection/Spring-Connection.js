@@ -9,7 +9,7 @@ function setup() {
 }
 
 function draw() {
-    background(0, 220); // Set background to white
+    background(220); // Set background to white
 
     let gravity = createVector(0, 2); // Create a gravity force (pulling the bob downward)
     bob.applyForce(gravity); // Apply the gravity force to the bob
@@ -59,7 +59,7 @@ class Bob {
     }
     // Draw the bob on the canvas
     show() {
-        stroke(0); // Set outline color
+        stroke(127); // Set outline color
         strokeWeight(2); // Set outline thickness
         fill(127); // Default bob color
 
@@ -141,7 +141,7 @@ class Spring {
 
     // Method to draw the line representing the spring connection between Bob and the anchor
     showLine(bob) {
-        stroke(0); // Set line color to black
+        stroke(127); // Set line color to black
         line(bob.position.x, bob.position.y, this.anchor.x, this.anchor.y); // Draw a line from the bob to the anchor
     }
 }
