@@ -6,6 +6,8 @@ function setup() {
 }
 
 function draw() {
+    // background(random(255), random(255), random(255)); // Random background color
+    // background(220); //Set background to a light gray (220)
     background(220, 0); // Set background to a light gray (220) with 0 transparency (fully opaque)
     emitter.addParticle(); // Add a new particle each frame
     emitter.run(); // Update and display all particles
@@ -47,8 +49,10 @@ class Particle {
 
         // Lifespan determines how long the particle will be visible
         this.lifespan = 255.0; // 255 means fully visible, 0 means completely faded
-    }
 
+        // Assign a random color to each particle
+        this.color = color(random(255), random(255), random(255));
+    }
     run() {
         let gravity = createVector(0, 0.05); // Define a small gravity force pulling the particle down
         this.applyForce(gravity); // Apply gravity to the particle
@@ -67,19 +71,20 @@ class Particle {
 
         this.lifespan -= 2; // Decrease lifespan over time (particle fades out)
     }
-
     show() {
-        // Set stroke (outline) color with transparency based on lifespan
-        stroke(0, this.lifespan);
-        strokeWeight(2); // Set stroke thickness
+        stroke(0, this.lifespan); // Set stroke color with fading effect
+        strokeWeight(2); // Define the stroke thickness
+        fill(
+            this.color.levels[0], // Red component
+            this.color.levels[1], // Green component
+            this.color.levels[2], // Blue component
+            this.lifespan // Transparency based on lifespan
+        );
+        ellipse(this.position.x, this.position.y, 10, 10); // Draw particle as a circle
+        // rect(this.position.x, this.position.y, 105, 5); // Draw the particle as a rectangle
 
-        fill(255, 255, 153, this.lifespan); // Set fill color (light yellow) with transparency based on lifespan
-
-        rect(this.position.x, this.position.y, 105, 5); // Draw the particle as a rectangle
     }
-
-    // Check if the particle should be removed (if lifespan is below 0)
     isDead() {
-        return this.lifespan < 0.0;
+        return this.lifespan < 0.0; // Return true if lifespan is over
     }
 }
