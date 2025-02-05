@@ -94,7 +94,7 @@ function setup() {
 }
 
 function draw() {
-    background(229, 255, 204); // Set a light green background color
+    background(229, 255, 204, 50); // Set a light green background color with more transparency
 
     // Update emitter position to follow the mouse cursor
     emitter.origin.set(mouseX, mouseY);
@@ -147,7 +147,7 @@ class Emitter {
 class Particle {
     constructor(x, y) {
         this.position = createVector(x, y); // Set initial position
-        this.acceleration = createVector(0, 0); // No initial acceleration
+        this.acceleration = createVector(0, 0.5); // No initial acceleration
         this.velocity = createVector(random(-1, 1), random(-1, 0)); // Random velocity
         this.lifespan = 255.0; // Particle lifespan (opacity)
     }
@@ -169,7 +169,7 @@ class Particle {
     update() {
         this.velocity.add(this.acceleration); // Update velocity with acceleration
         this.position.add(this.velocity); // Update position with velocity
-        this.lifespan -= 2; // Reduce lifespan over time (fading effect)
+        this.lifespan -= 1; // Gradually decrease lifespan to make the particle fade out over time
         this.acceleration.mult(0); // Reset acceleration for the next frame
     }
 
@@ -177,8 +177,8 @@ class Particle {
     show() {
         stroke(0, this.lifespan); // Set stroke color with fading effect
         strokeWeight(2); // Set stroke thickness
-        fill(127, this.lifespan); // Fill color with fading effect
-        circle(this.position.x, this.position.y, 8); // Draw a small circle as the particle
+        fill(255, 51, 153, this.lifespan); // Fill color with fading effect
+        rect(this.position.x, this.position.y, 5, 5); // Draw a small rect as the particle
     }
 
     // Method to check if the particle is dead (lifespan below 0)
