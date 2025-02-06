@@ -51,7 +51,7 @@ class Particle {
         this.lifespan = 255; // Alpha value for fading effect
 
         // BUG FIX: Provide a set of characters to randomly choose from
-        this.letter = random("ABCDEFGHIJKLMNOPQRSTUVWXYZ"); // Randomly choose a letter
+        this.letter = random(""); // Randomly choose a letter
     }
 
     update() {
