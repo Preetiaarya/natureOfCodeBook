@@ -2,9 +2,13 @@ let emitters = []; // Array to store multiple emitters
 
 function setup() {
     createCanvas(800, 400); // Set up a canvas of 800x400 pixels
+    emitters.push(new Emitter(100, 60));
+    // emitters.push(new Emitter(200, 30));
+    // emitters.push(new Emitter(350, 90));
+    // emitters.push(new Emitter(540, 50));
 }
 function draw() {
-    background(220); // Clear the screen with a light gray background
+    background(204, 229, 255); // Clear the screen with a light gray background
 
     // Loop through each emitter in the array and update it
     for (let emitter of emitters) {
@@ -75,9 +79,13 @@ class Particle {
         stroke(0, this.lifespan); // Set stroke color with fading effect
         strokeWeight(2); // Set stroke thickness
         fill(255, 51, 153, this.lifespan); // Fill color with fading effect
-        rect(this.position.x, this.position.y, 5, 5); // Draw a small rect as the particle
-    }
+        circle(this.position.x, this.position.y, 45);
+        fill(153, 255, 204, this.lifespan); // Fill color with fading effect
+        circle(this.position.x, this.position.y, 35); // Draw a small circle as the particle
+        fill(255, 255, 51, this.lifespan); // Fill color with fading effect
+        circle(this.position.x, this.position.y, 15);
 
+    }
     // Method to check if the particle is dead (lifespan below 0)
     isDead() {
         return this.lifespan < 0.0;
